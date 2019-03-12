@@ -1,11 +1,18 @@
-body {
+html, body,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6, p, div {
   margin: 0;
   padding: 0;
+}
+
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #343d46;
 }
 
 code {
