@@ -25,6 +25,11 @@ export const boolAction = flag => ({
   payload: flag
 });
 
+export const shareAction = urlList => ({
+  type: "SHARE",
+  payload: urlList
+});
+
 //Twiiter.js
 export const tweetOn = () => ({
     type: "TWEET_ON"
@@ -39,18 +44,19 @@ let timeID = 0;
 //スイッチオンとGIFデータ取得と不要データ削除とランダムdispatch
 export const hitGiphy = bool => {
   return dispatch => {
-
 //onloadで読み込み終わったらフラグを渡す
 //for文でロード判定をつけて格納していく
+  dispatch(waitSwitch());
+
   if(bool === true){
     console.log("スロット開始");
-    dispatch(switchOn());
     dispatch(tweetOn());
     giphyAPI().then(res => {
       const loop = list => {
           let random = Math.floor(Math.random() * list.length);
           dispatch(axiosGif(list[random]));
           timeID = setTimeout(() => {loop(list)}, 800);
+          dispatch(switchOn());
       };
 
       const data = res.data.data;

@@ -60,8 +60,9 @@ export default class Twitter extends Component {
   }
 
   render() {
-    const { tweetFlag } = this.props;
+    const { tweetFlag, getTweet } = this.props;
     console.log(tweetFlag);
+    console.log(`getTweet!${getTweet}`);
 
     return (
     <TwitterBtn tweetDisplay={tweetFlag} ><p><span className="fab fa-twitter"></span>宇宙猫を解放する</p></TwitterBtn>

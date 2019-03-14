@@ -2,8 +2,8 @@ import React from "react";
 import styled from 'styled-components';
 
 const Img = styled.img`
-    width: 40rem;
-    height: 40rem;
+    width: 50rem;
+    height: 50rem;
     cursor: pointer;
 
     margin-top: 1.5rem;
@@ -28,9 +28,13 @@ export default class GetGif extends React.Component {
     super(props);
   }
 
-
   render(){
-    const { urlList } = this.props;
+    const { urlList, tweetShare, shareAction } = this.props;
+    if(tweetShare === "OFF"){
+      //シェアする猫のurlを渡してあげる
+      shareAction(urlList);
+    }
+
     return (
       <Img src={urlList} alt="test" key={urlList} />
     );

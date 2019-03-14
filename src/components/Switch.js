@@ -2,8 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import SlotOff from './antenaOff.png';
 import SlotOn from './antenaOn.png';
+import SlotWait from './antenaWait.png'
 
 const Slotter = styled.img`
+
+  width: 70%;
+  max-width: 45rem;
+  text-align: cetner;
+  margin-top: 4rem;
+  cursor: pointer;
+  background-color: #343d46;
+
 
   animation: float 2s ease-in-out infinite;
 
@@ -12,6 +21,17 @@ const Slotter = styled.img`
     0% { transform:translateY(0) }
     50% { transform:translateY(-1rem) }
     100% { transform:translateY(0) }
+
+  @media only screen and (max-width: 323px) {
+    margin-left: 1rem;
+    width: 22rem;
+  }
+  @media only screen and (min-widht: 324px) and (max-width: 767px) {
+    width: 26rem;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    width: 35rem;
+  }
   `
 
 export default class Switch extends React.Component {
@@ -21,7 +41,9 @@ export default class Switch extends React.Component {
 
   render() {
     const { buttonText, hitGiphy, getBool } = this.props;
-    const Slots = buttonText === "スロット開始" ? SlotOn : SlotOff;
+    console.log(`wait確認用${buttonText}`);
+    const SlotOnWait = buttonText === "wait.." ? SlotWait : SlotOn;
+    const Slots = buttonText === "スロット開始" ? SlotOnWait : SlotOff;
     return (
       <div>
         <Slotter onClick={()=>{hitGiphy(getBool)}} src={Slots} />
