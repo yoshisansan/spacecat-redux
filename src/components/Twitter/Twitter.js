@@ -21,7 +21,9 @@ const TwitterBtn = styled.div`
       100% {transform: translate(0, 0.6rem);
       }
     }
-      p {
+      a {
+        pointer-events: ${props => props.tweetDisplay === "OFF" ? '' : 'none'};
+
         height: 7rem;
         color: #fff;
         line-height: 7rem;
@@ -38,14 +40,14 @@ const TwitterBtn = styled.div`
       @media only screen and (max-width: 323px) {
         margin: 6rem auto;
         width: 20rem;
-        p {
+        a {
           font-size: 1.7rem;
         }
       }
       @media only screen and (min-width: 324px) and (max-width: 767px) {
         margin: 6rem auto;
         width: 25rem;
-        p {
+        a {
           font-size: 2.2rem;
         }
       }
@@ -64,8 +66,11 @@ export default class Twitter extends Component {
     console.log(tweetFlag);
     console.log(`getTweet!${getTweet}`);
 
+    const twitterText = "地球ヲ、宇宙猫デ支配セヨ... ＃宇宙猫";
+    const twitterLink = `https://twitter.com/share?url=${getTweet}&text=${twitterText}`;
+
     return (
-    <TwitterBtn tweetDisplay={tweetFlag} ><p><span className="fab fa-twitter"></span>宇宙猫を解放する</p></TwitterBtn>
+    <TwitterBtn tweetDisplay={tweetFlag}><a href={twitterLink}><span className="fab fa-twitter"></span>宇宙猫を解放する</a></TwitterBtn>
     );
   }
 }

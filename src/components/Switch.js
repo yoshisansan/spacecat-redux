@@ -42,7 +42,7 @@ export default class Switch extends React.Component {
   render() {
     const { buttonText, hitGiphy, getBool } = this.props;
     console.log(`wait確認用${buttonText}`);
-    const SlotOnWait = buttonText === "wait.." ? SlotWait : SlotOn;
+    const SlotOnWait = buttonText === "wait..." ? SlotWait : SlotOn;
     const Slots = buttonText === "スロット開始" ? SlotOnWait : SlotOff;
     return (
       <div>
