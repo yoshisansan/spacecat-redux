@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const HeaderTitle = styled.div`
-
-  margin: 0 atuo;
+  font-family: 'Noto Sans TC', sans-serif;
 
     .title{
     color: white;
