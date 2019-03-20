@@ -7,7 +7,8 @@ const mapStateToProps = state => {
   // console.log(state.gifReceiver);
   return {
     urlList: state.gifReceiver,
-    tweetShare: state.tweetData
+    tweetShare: state.tweetData,
+    gifListReceiver: state.gifListReceiver
   };
 };
 

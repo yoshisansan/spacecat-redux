@@ -30,6 +30,11 @@ export const shareAction = urlList => ({
   payload: urlList
 });
 
+export const gifList = list => ({
+  type: 'GIF_LIST',
+  payload: list
+})
+
 //Twiiter.js
 export const tweetOn = () => ({
     type: "TWEET_ON"
@@ -41,11 +46,14 @@ export const tweetOff = () => ({
 
 
 let timeID = 0;
+
+const callTest = () => {
+  console.log("called");
+}
 //スイッチオンとGIFデータ取得と不要データ削除とランダムdispatch
 export const hitGiphy = bool => {
   return dispatch => {
-//onloadで読み込み終わったらフラグを渡す
-//for文でロード判定をつけて格納していく
+//問題はsrcが読み込まれるたびにローディングしていること
   dispatch(waitSwitch());
 
   if(bool === true){
@@ -62,9 +70,12 @@ export const hitGiphy = bool => {
       const data = res.data.data;
       const getUrls = data.map(item => item.images.downsized.url);
       const list = remove(getUrls);
+      dispatch(gifList(list));
+      console.log(list);
       const flag = false;
       dispatch(boolAction(flag));
       loop(list)
+      callTest();
     });
   }else{
     console.log("FALSE");
