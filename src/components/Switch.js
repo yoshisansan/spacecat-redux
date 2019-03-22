@@ -7,9 +7,9 @@ import SlotWait from './antenaWait.png'
 const Slotter = styled.img`
 
   width: 70%;
-  max-width: 45rem;
+  max-width: 26rem;
   text-align: cetner;
-  margin-top: 4rem;
+  margin-top: 2.5rem;
   cursor: pointer;
   background-color: #343d46;
 
@@ -27,10 +27,10 @@ const Slotter = styled.img`
     width: 22rem;
   }
   @media only screen and (min-widht: 324px) and (max-width: 767px) {
-    width: 26rem;
+    width: 24rem;
   }
   @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    width: 35rem;
+    width: 26rem;
   }
   `
 

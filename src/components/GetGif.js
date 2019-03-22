@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import Preloading from './Preloading/Preloading';
 
 const Img = styled.img`
-    width: 50rem;
-    height: 50rem;
+    width: 35rem;
+    height: 35rem;
     cursor: pointer;
 
     margin-top: 1.5rem;
@@ -23,13 +23,6 @@ const Img = styled.img`
     }
 `
 
-let timerID = 0;
-
-const timerTest = () => {
-  console.log('大麻');
-  // setTimeout(timerTest(), 10000);
-  timerID = setTimeout(() => {timerTest()}, 1000);
-}
 
 export default class GetGif extends React.Component {
 
@@ -38,19 +31,18 @@ export default class GetGif extends React.Component {
   }
 
   render(){
-    const { urlList, tweetShare, shareAction, gifListReceiver } = this.props;
+    const { urlList, tweetShare, shareAction, gifListReceiver, makeTag } = this.props;
     if(tweetShare === "OFF"){
       //シェアする猫のurlを渡してあげる
       shareAction(urlList);
     }
+    console.log(`ああ${makeTag}`);
 
     return (
-      <div>
-      <Img src={urlList} alt="test" key={urlList} />
-      <Preloading src={gifListReceiver} alt="test" />
-      <button onClick={()=>{ timerTest() } }>テスト</button>
-      <button onClick={()=>{ clearTimeout(timerID) }}>クリア</button>
-      </div>
+      <Preloading src={gifListReceiver} bool={tweetShare} alt="test" />
     );
+    // 旧：<Img src={urlList} alt="test" key={urlList} />
+    // <button onClick={()=>{ timerTest() } }>テスト</button>
+    // <button onClick={()=>{ clearTimeout(timerID) }}>クリア</button>
   }
 }

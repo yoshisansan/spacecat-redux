@@ -19,7 +19,7 @@ const HeaderTitle = styled.div`
 
   @media only screen and (min-width: 324px) and (max-width: 1024px)  {
     .title{
-      font-size: 8.8rem;
+      font-size: 7.8rem;
     }
   }
 

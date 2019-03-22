@@ -4,9 +4,9 @@ import styled from 'styled-components';
 const TwitterBtn = styled.div`
     animation: ${props => props.tweetDisplay === "OFF" ? 'squash 0.3s ease-in-out' : 'none'};
     background-color: ${props => props.tweetDisplay === "OFF" ? '#55acee' : 'gray'};
-    width: 40rem;
+    max-width: 30rem;
     text-align: center;
-    margin: 6rem auto;
+    margin: 4rem auto;
     border-radius: 2rem;
     @keyframes squash {
       0% {transform: scale(1) translate(0, 0);}
@@ -38,14 +38,14 @@ const TwitterBtn = styled.div`
         padding-right: 0.8rem;
       }
       @media only screen and (max-width: 323px) {
-        margin: 6rem auto;
+        margin: 3rem auto;
         width: 20rem;
         a {
           font-size: 1.7rem;
         }
       }
       @media only screen and (min-width: 324px) and (max-width: 767px) {
-        margin: 6rem auto;
+        margin: 3rem auto;
         width: 25rem;
         a {
           font-size: 2.2rem;

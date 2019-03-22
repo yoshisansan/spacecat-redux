@@ -8,7 +8,8 @@ const mapStateToProps = state => {
   return {
     urlList: state.gifReceiver,
     tweetShare: state.tweetData,
-    gifListReceiver: state.gifListReceiver
+    gifListReceiver: state.gifListReceiver,
+    makeTag: state.makeTag
   };
 };
 

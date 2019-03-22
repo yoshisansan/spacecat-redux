@@ -33,7 +33,7 @@ export const shareAction = urlList => ({
 export const gifList = list => ({
   type: 'GIF_LIST',
   payload: list
-})
+});
 
 //Twiiter.js
 export const tweetOn = () => ({
@@ -44,12 +44,20 @@ export const tweetOff = () => ({
     type: "TWEET_OFF"
 });
 
+//Preloading.js
+export const boolActionPreloading = flag => ({
+  type: "FLAG_PRELOAD",
+  payload: flag
+});
+
+export const preloadTag = Item => ({
+  type: "TAG",
+  payload: Item
+})
+
 
 let timeID = 0;
 
-const callTest = () => {
-  console.log("called");
-}
 //スイッチオンとGIFデータ取得と不要データ削除とランダムdispatch
 export const hitGiphy = bool => {
   return dispatch => {
@@ -60,22 +68,20 @@ export const hitGiphy = bool => {
     console.log("スロット開始");
     dispatch(tweetOn());
     giphyAPI().then(res => {
-      const loop = list => {
-          let random = Math.floor(Math.random() * list.length);
-          dispatch(axiosGif(list[random]));
-          timeID = setTimeout(() => {loop(list)}, 800);
-          dispatch(switchOn());
-      };
+      // const loop = list => {
+      //     let random = Math.floor(Math.random() * list.length);
+      //     dispatch(axiosGif(list[random]));
+      //     timeID = setTimeout(() => {loop(list)}, 800);
+      //     dispatch(switchOn());
+      // };
 
       const data = res.data.data;
       const getUrls = data.map(item => item.images.downsized.url);
       const list = remove(getUrls);
       dispatch(gifList(list));
-      console.log(list);
       const flag = false;
       dispatch(boolAction(flag));
-      loop(list)
-      callTest();
+      // loop(list)
     });
   }else{
     console.log("FALSE");

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Vita from './Vita.jpg';
 
 const Preload = styled.img`
-    width: 50rem;
-    height: 50rem;
+    max-width: 30rem;
+    height: 30rem;
     cursor: pointer;
 
     margin-top: 1.5rem;
@@ -23,14 +23,18 @@ const Preload = styled.img`
 `
 
 //1.indexからimagesを受け取る 2stateに格納する 3render前にcomponentDidmount 45
-class Preloading extends React.PureComponent {
+//srcにあらかじめ<preload />のJSXで格納しておく
+class Preloading extends React.Component {
+
   static defaultProps = {
-    src: ""
+    src: "",
+    bool: ""
   };
 
   state = {
     src: this.props.src,
     image: this.props.image,
+    bool: this.props.bool,
     loaded: false,
     error: false
   };
@@ -69,24 +73,32 @@ class Preloading extends React.PureComponent {
   };
 
   render() {
-    console.log(this.props.src)
     const { loaded, error, src } = this.state;
+    const { bool, makeTag, preloadTag } = this.props;
 
     const Items = src.map((list) =>
       <Preload height='100' src={list} alt="test" />
       );
 
+
     let timerID = 0;
 
-    if(loaded){
+    if(loaded === true){
       timerID = setTimeout(() =>{
-        let Item = Items[Math.floor(Math.random() * 10) % Items.length];
+        const Item = Items[Math.floor(Math.random() * 10) % Items.length];
         this.setState({ image: Item });
-      }, 50);
+        console.log(this.state.image.props.src);
+      }, 100);
+    }
+
+
+    if(bool === "OFF"){
+      clearTimeout(timerID);
     }
 
     return (
       <div>
+
         {!loaded && !error && <Preload height='100' src={Vita} alt="test" /> }
         {loaded && <ul>{this.state.image}</ul> }
         {error && <Preload height='100' src={Vita} alt="test" /> }
