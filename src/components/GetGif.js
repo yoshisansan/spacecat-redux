@@ -23,7 +23,6 @@ const Img = styled.img`
     }
 `
 
-
 export default class GetGif extends React.Component {
 
   constructor(props){
@@ -31,15 +30,14 @@ export default class GetGif extends React.Component {
   }
 
   render(){
-    const { urlList, tweetShare, shareAction, gifListReceiver, makeTag } = this.props;
-    if(tweetShare === "OFF"){
-      //シェアする猫のurlを渡してあげる
-      shareAction(urlList);
-    }
-    console.log(`ああ${makeTag}`);
+    const { tweetShare, shareAction, gifListReceiver } = this.props;
+    // if(tweetShare === "OFF"){
+    //   //シェアする猫のurlを渡してあげる
+    //   // shareAction(urlList);
+    // }
 
     return (
-      <Preloading src={gifListReceiver} bool={tweetShare} alt="test" />
+      <Preloading shareAction={shareAction} src={gifListReceiver} bool={tweetShare} alt="test" />
     );
     // 旧：<Img src={urlList} alt="test" key={urlList} />
     // <button onClick={()=>{ timerTest() } }>テスト</button>

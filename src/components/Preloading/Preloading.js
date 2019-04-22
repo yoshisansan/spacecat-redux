@@ -1,6 +1,19 @@
 import React from "react";
 import styled from 'styled-components';
 import Vita from './Vita.jpg';
+import spacecat1 from './spacecatImg/spacecat1.jpg';
+import spacecat2 from './spacecatImg/spacecat2.jpg';
+import spacecat3 from './spacecatImg/spacecat3.jpg';
+import spacecat4 from './spacecatImg/spacecat4.jpg';
+import spacecat5 from './spacecatImg/spacecat5.jpg';
+import spacecat6 from './spacecatImg/spacecat6.jpg';
+import spacecat7 from './spacecatImg/spacecat7.jpg';
+import spacecat8 from './spacecatImg/spacecat8.jpg';
+import spacecat9 from './spacecatImg/spacecat9.jpg';
+import spacecat10 from './spacecatImg/spacecat10.jpg';
+import spacecat11 from './spacecatImg/spacecat11.jpg';
+
+const spaceCats = [spacecat1, spacecat2, spacecat3, spacecat4, spacecat5, spacecat6, spacecat7, spacecat8, spacecat9, spacecat10, spacecat11 ];
 
 const Preload = styled.img`
     max-width: 30rem;
@@ -34,6 +47,8 @@ class Preloading extends React.Component {
   state = {
     src: this.props.src,
     image: this.props.image,
+    cat: this.props.space,
+    final: this.props.final,
     bool: this.props.bool,
     loaded: false,
     error: false
@@ -49,17 +64,12 @@ class Preloading extends React.Component {
     }
   }
 
-
-  // getRandomImage = () => {
-  //     let Set = ;
-  //     this.setState({Image: Set});
-  //     timerID = setTimeout(getRandomImage(), 1000);
-  // }
-
   preloadImage = src => {
     if (!src) {
       return;
     }
+    let gifCat = src[Math.floor(Math.random() * src.length)];
+    this.setState({ final: gifCat })
 
     const img = new window.Image();
 
@@ -73,38 +83,64 @@ class Preloading extends React.Component {
   };
 
   render() {
-    const { loaded, error, src } = this.state;
-    const { bool, makeTag, preloadTag } = this.props;
+    const { loaded, error } = this.state;
+    const { bool, shareAction } = this.props;
 
-    const Items = src.map((list) =>
-      <Preload height='100' src={list} alt="test" />
-      );
+    // const Items = src.map((list) =>
+    //   <Preload height='100' src={list} alt="test" />
+    //   );
 
+    // if(loaded === true){
+    //   var timerID = setTimeout(() =>{
+    //
+    //     let Item = Items[Math.floor(Math.random() * Items.length)];
+    //     this.setState({ image: Item });
+    //     // console.log(this.state.image.props.src);
+    //   }, 100);
+    // }
 
-    let timerID = 0;
+    if(bool==="ON"){
 
-    if(loaded === true){
-      timerID = setTimeout(() =>{
-        const Item = Items[Math.floor(Math.random() * 10) % Items.length];
-        this.setState({ image: Item });
-        console.log(this.state.image.props.src);
-      }, 100);
-    }
+      var spaceLoop = setTimeout(()=>{
+        let spaceCat = spaceCats[Math.floor(Math.random() * spaceCats.length)];
+        this.setState({ cat: spaceCat });
+      }, 150);
 
+}else if(bool==="OFF"){
 
-    if(bool === "OFF"){
-      clearTimeout(timerID);
-    }
+    clearTimeout(spaceLoop);
+    //シェアする猫のurlを渡してあげる
+    shareAction(this.state.final);
+
+    // let spaceCat = src[Math.floor(Math.random() * src.length)];
+    // this.setState({ cat: spaceCat });
+    // randomImg(bool);
+}
+
+   // const stopLoop = bool =>{
+   //   if(bool==="OFF"){
+   //     let gifCat = src[Math.floor(Math.random() * src.length)];
+   //     this.setState({ cat: gifCat });
+   //     // clearTimeout(spaceLoop);
+   //   }
+   // }
+   //
+     // this.setState({ cat: Gifcat });
+     // let Gifcat = src[Math.floor(Math.random() * src.length)];
+     // console.log(Gifcat);
+     // this.setState({ cat: Gifcat });
 
     return (
       <div>
-
-        {!loaded && !error && <Preload height='100' src={Vita} alt="test" /> }
-        {loaded && <ul>{this.state.image}</ul> }
+        {!loaded &&
+        !error && <Preload height='100' src={Vita} alt="test" /> }
+        {loaded && bool === "ON" && <ul><Preload height='100' src={this.state.cat} alt="cat" /></ul> }
+        {loaded && bool === "OFF" && <ul><Preload height='100' src={this.state.final} alt="cat" /></ul> }
         {error && <Preload height='100' src={Vita} alt="test" /> }
       </div>
     );
   }
+
 }
 
 export default Preloading;

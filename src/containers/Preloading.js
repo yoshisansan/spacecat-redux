@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import Preloading from "../components/Preloading/Preloading";
-import { boolActionPreloading, preloadTag } from '../action';
+import { boolActionPreloading, preloadTag, shareAction } from '../action';
 
 const mapStateToProps = state => {
   // console.log(state.gifReceiver);
@@ -13,12 +13,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    shareAction: flag => {
-      dispatch(boolActionPreloading(flag));
-    },
+    // shareAction: urlList => {
+    //   dispatch(shareAction(urlList));
+    // },
     preloadTag: Item => {
       dispatch(preloadTag(Item));
-    }
+    },
+
   };
 };
 

@@ -63,8 +63,8 @@ export default class Twitter extends Component {
 
   render() {
     const { tweetFlag, getTweet } = this.props;
-    console.log(tweetFlag);
-    console.log(`getTweet!${getTweet}`);
+    // console.log(tweetFlag);
+    // console.log(`getTweet!${getTweet}`);
 
     const twitterText = "地球ヲ、宇宙猫デ支配セヨ... ＃宇宙猫";
     const twitterLink = `https://twitter.com/share?url=${getTweet}&text=${twitterText}`;
