@@ -1,4 +1,5 @@
 const remove = list => {
+
   const removeImgs = [
     "https://media2.giphy.com/media/l0HlBwaMKwzEhTYkw/giphy-downsized.gif",
     "https://media3.giphy.com/media/l0MYtF4MaHlhEL7SE/giphy-tumblr.gif",
@@ -25,6 +26,7 @@ const remove = list => {
   for (let i = 0; i < removeImgs.length; i++) {
     list = list.filter(Item => Item !== removeImgs[i]);
   }
+
   return list;
 };
 

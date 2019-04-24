@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const HeaderTitle = styled.div`
-
-  margin: 0 atuo;
+  font-family: 'Noto Sans TC', sans-serif;
 
     .title{
     color: white;
@@ -20,7 +19,7 @@ const HeaderTitle = styled.div`
 
   @media only screen and (min-width: 324px) and (max-width: 1024px)  {
     .title{
-      font-size: 8.8rem;
+      font-size: 7.8rem;
     }
   }
 

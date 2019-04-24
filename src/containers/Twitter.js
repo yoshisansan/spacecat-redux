@@ -5,7 +5,8 @@ import { tweetOn, tweetOff } from "../actions";
 
 const mapStateToProps = state => {
   return {
-    tweetFlag: state.tweetData
+    tweetFlag: state.tweetData,
+    getTweet: state.shareTwitter
   };
 };
 

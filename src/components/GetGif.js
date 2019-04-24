@@ -1,9 +1,11 @@
 import React from "react";
 import styled from 'styled-components';
 
+import Preloading from './Preloading/Preloading';
+
 const Img = styled.img`
-    width: 40rem;
-    height: 40rem;
+    width: 35rem;
+    height: 35rem;
     cursor: pointer;
 
     margin-top: 1.5rem;
@@ -21,18 +23,24 @@ const Img = styled.img`
     }
 `
 
-
 export default class GetGif extends React.Component {
 
   constructor(props){
     super(props);
   }
 
-
   render(){
-    const { urlList } = this.props;
+    const { tweetShare, shareAction, gifListReceiver } = this.props;
+    // if(tweetShare === "OFF"){
+    //   //シェアする猫のurlを渡してあげる
+    //   // shareAction(urlList);
+    // }
+
     return (
-      <Img src={urlList} alt="test" key={urlList} />
+      <Preloading shareAction={shareAction} src={gifListReceiver} bool={tweetShare} alt="test" />
     );
+    // 旧：<Img src={urlList} alt="test" key={urlList} />
+    // <button onClick={()=>{ timerTest() } }>テスト</button>
+    // <button onClick={()=>{ clearTimeout(timerID) }}>クリア</button>
   }
 }

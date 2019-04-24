@@ -1,4 +1,4 @@
-const initialState = "OFF";
+const initialState = "READY";
 
 const tweetData = (state = initialState, action) => {
   // console.log(action);

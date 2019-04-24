@@ -20,32 +20,6 @@ const Wrapper = styled.div`
   }
 `
 
-const Button = styled.div`
-
-  margin-bottom: ${props => props.AdjustBottom === "ON" ? '19rem' : '0'};
-
-  width: 70%;
-  max-width: 50rem;
-  text-align: cetner;
-  margin-top: 4rem;
-  margin-left: 2rem;
-  cursor: pointer;
-  background-color: #343d46;
-  border: none;
-
-  @media only screen and (max-width: 323px) {
-    margin-left: 1rem;
-    width: 22rem;
-  }
-
-  @media only screen and (min-widht: 324px) and (max-width: 767px) {
-    width: 26rem;
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    width: 35rem;
-  }
-`
 
 const App = () => {
   return (
@@ -53,9 +27,7 @@ const App = () => {
     <Wrapper>
       <Header />
       <GetGif />
-      <Button onClick={()=>{}}>
       <Switch />
-      </Button>
       <Twitter />
       <Hukidashi />
     </Wrapper>
